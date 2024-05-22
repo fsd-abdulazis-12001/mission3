@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Akun</title>
+    <link rel="stylesheet" href="Style/style.css">
+</head>
+<body>
+    <header class="header">
+        <img class="logo" src="assets/logo/logo.png" alt="Logo">
+    </header>
+    <div class="container">
+        <form class="registration-form">
+            <div class="form-Description">
+                <h2>Pendaftaran Akun</h2>
+                <p>Yuk, daftarkan akunmu sekarang juga!</p>
+            </div>
+            <div class="form-main">
+                <div class="form-input">
+                    <label for="fullname">Nama Lengkap <span style="color: red;">*</span></label>
+                    <input type="text" id="fullname" name="fullname" required>
+
+                    <label for="email">E-Mail <span style="color: red;">*</span></label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">No. Hp <span style="color: red;">*</span></label>
+                    <div class="phone-input">
+                        <div class="country-code">
+                            <img id="flag" src="assets/logo/Country/id.png" alt="ID">
+                            <select id="country-select">
+                                <option value="+62" data-flag="flags/indonesia.png">+62</option>
+                            </select>
+                        </div>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+
+                    <label for="password">Kata Sandi <span style="color: red;">*</span></label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <span id="togglePassword" class="toggle-password"></span>
+                    </div>
+
+                    <label for="confirm-password">Konfirmasi Kata Sandi <span style="color: red;">*</span></label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                        <span id="toggleConfirmPassword" class="toggle-password"></span>
+                    </div>
+
+                    <a href="#" class="forgot-password">Lupa Password?</a>
+                    <button type="submit" class="btn register-btn" onclick="submitForm()">Daftar</button>
+                    
+                    <script>
+                      function submitForm() {
+                       
+                        var inputs = document.querySelectorAll('input[required]');
+                        
+                       
+                        var allFilled = true;
+                        inputs.forEach(function(input) {
+                          if (input.value.trim() === '') {
+                            allFilled = false;
+                          }
+                        });
+                        
+                       
+                        if (allFilled) {
+                          location.href = 'register.html';
+                        }
+                      }
+                    </script>
+                    <button type="button" class="btn login-btn"onclick="location.href='beranda.html'">Masuk</button>
+                </div>
+                <p class="or"><span>atau</span></p>
+                <button type="button" class="btn google-btn"> <img src="assets/logo/google.png">Daftar dengan Google</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const confirmPassword = document.getElementById('confirm-password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('show-password');
+        });
+
+        toggleConfirmPassword.addEventListener('click', function () {
+            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPassword.setAttribute('type', type);
+            this.classList.toggle('show-password');
+        });
+    </script>
+</body>
+</html>
